@@ -1,0 +1,64 @@
+DROP DATABASE IF EXISTS libraryDAO;
+CREATE DATABASE libraryDAO;
+USE libraryDAO;
+
+CREATE TABLE publishers(
+	id int(11) AUTO_INCREMENT NOT NULL,
+	pubName varchar(100)NOT NULL,
+	city varchar(100),
+	state varchar(2),
+	PRIMARY KEY(id)
+);
+
+CREATE TABLE books(
+	id int(11) AUTO_INCREMENT NOT NULL,
+	title varchar(50) NOT NULL,
+	isbn varchar(15),
+	publishDate datetime,
+	price varchar(10),
+	publisherId int(11),
+	FOREIGN KEY (publisherId) REFERENCES publishers(id),
+	PRIMARY KEY(id)
+);
+
+CREATE TABLE author(
+	id int(11) AUTO_INCREMENT NOT NULL,
+	firstName varchar(100) NOT NULL,
+	lastName varchar(100) NOT NULL,
+	phone varchar(50),
+	PRIMARY KEY(id)
+);
+
+CREATE TABLE book_authors(
+	bookId int(11) NOT NULL,
+	authorId int(11) NOT NULL,
+	FOREIGN KEY (bookId) REFERENCES books(id),
+	FOREIGN KEY (authorId) REFERENCES author(id)
+);
+
+INSERT INTO author (firstName, lastName, phone) VALUES ('JK', 'Rowling', '555-6666');
+INSERT INTO author (firstName, lastName, phone) VALUES ('Pete', 'Jones', '555-6666');
+INSERT INTO author (firstName, lastName, phone) VALUES ('Bob', 'Smith', '555-6666');
+INSERT INTO author (firstName, lastName, phone) VALUES ('List', 'Fish', '555-6666');
+INSERT INTO author (firstName, lastName, phone) VALUES ('Hmeo', 'Jone', '555-6666');
+INSERT INTO author (firstName, lastName, phone) VALUES ('Tom', 'Salazar', '555-6666');
+INSERT INTO author (firstName, lastName, phone) VALUES ('JK', 'Rowling', '555-6666');
+
+INSERT INTO publishers (pubName, city, state) VALUES ('Haper', 'Miami', 'FL');
+INSERT INTO publishers (pubName, city, state) VALUES ('Town', 'Charlotte', 'NC');
+INSERT INTO publishers (pubName, city, state) VALUES ('Collins', 'New York City', 'NY');
+INSERT INTO publishers (pubName, city, state) VALUES ('LightHouse', 'LA', 'CA');
+
+INSERT INTO books (title, isbn, publishDate, price, publisherId) 
+VALUES ('How To Meet Woment at Coffee Shops', '122343', CURDATE(), '12.99', 3);
+
+INSERT INTO books (title, isbn, publishDate, price, publisherId) 
+VALUES ('How To Meet Men at Coffee Shops', '122343', CURDATE(), '12.99', 2);
+
+INSERT INTO books (title, isbn, publishDate, price, publisherId) 
+VALUES ('Coffee Shops','122343', CURDATE() , '12.99', 1);
+
+INSERT INTO book_authors (bookId, authorId) VALUES (1, 3);
+INSERT INTO book_authors (bookId, authorId) VALUES (1, 2);
+
+

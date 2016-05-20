@@ -1,0 +1,2 @@
+Yorkie 4 23.3
+German_Shepherd 5 98.7

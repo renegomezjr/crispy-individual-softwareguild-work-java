@@ -1,0 +1,13 @@
+1. It is an assignment operator.
+
+2. It is a comparison operator that denotes equality.
+
+3. Yes, they act differently.
+-'=' will assign a copy of the primitive, but it will assign the reference to reference types.
+-'==' will compare value with primitives, but it will compare the reference in reference types so one can't use '==' to compare reference types.
+
+4. .equals compares reference types.
+
+5. .equals can't be applied to all reference types.
+
+6. No they don't because there are other ways to compare reference types.
